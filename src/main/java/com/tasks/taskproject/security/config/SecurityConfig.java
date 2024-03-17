@@ -1,6 +1,5 @@
 package com.tasks.taskproject.security.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,8 +19,12 @@ import com.tasks.taskproject.security.services.UserDetailsServiceImp;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Autowired
-    UserDetailsServiceImp userDetailsServiceImp;
+    private final UserDetailsServiceImp userDetailsServiceImp;
+
+    public SecurityConfig(UserDetailsServiceImp userDetailsServiceImp){
+        this.userDetailsServiceImp = userDetailsServiceImp;
+
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpS)throws Exception{

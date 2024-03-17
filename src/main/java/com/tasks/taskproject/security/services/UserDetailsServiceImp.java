@@ -16,7 +16,7 @@ import com.tasks.taskproject.security.repositories.UserRepository;
 public class UserDetailsServiceImp implements UserDetailsService{
 
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
