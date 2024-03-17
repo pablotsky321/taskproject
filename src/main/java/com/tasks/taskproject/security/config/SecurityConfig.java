@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.tasks.taskproject.security.entities.Roles;
 import com.tasks.taskproject.security.filter.JwtAuthenticationFilter;
 import com.tasks.taskproject.security.services.UserDetailsServiceImp;
 
@@ -41,6 +42,8 @@ public class SecurityConfig {
                 })
                 .authorizeHttpRequests(requests->{
                     requests.requestMatchers("/auth/**","/index.html").permitAll();
+                    requests.requestMatchers("/test/user_page").hasAuthority(Roles.USER.name());
+                    requests.requestMatchers("/test/admin_page").hasAuthority(Roles.ADMIN.name());
                     requests.anyRequest().authenticated();
                 })
                 .sessionManagement(session->{

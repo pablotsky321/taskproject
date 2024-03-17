@@ -1,57 +1,30 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bienvenido al Gestor de Tareas</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Estilos personalizados -->
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
-    .container {
-      max-width: 600px;
-    }
-    .jumbotron {
-      background-color: #007bff;
-      color: #fff;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a mi Aplicación Spring Boot</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
 
-  <div class="jumbotron text-center">
-    <h1 class="display-4">¡Bienvenido al Gestor de Tareas!</h1>
-    <p class="lead">Organiza tu día de manera eficiente</p>
-    <hr class="my-4">
-    <p>Accede a tus tareas desde cualquier lugar</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Iniciar sesión</a>
-    <a class="btn btn-success btn-lg" href="#" role="button">Registrarse</a>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h2>Características principales:</h2>
-        <ul>
-          <li>Crear, editar y eliminar tareas fácilmente</li>
-          <li>Establecer fechas de vencimiento y prioridades</li>
-          <li>Organizar tareas por categorías</li>
-          <li>Acceder a tu lista de tareas desde cualquier dispositivo</li>
-        </ul>
-      </div>
-      <div class="col-md-6">
-        <h2>¿Por qué elegirnos?</h2>
-        <p>Nuestro Gestor de Tareas te permite gestionar tus actividades diarias de manera eficiente, aumentando tu productividad y ayudándote a cumplir tus metas.</p>
-      </div>
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-10">
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="flex justify-center">
+                <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fniixer.com%2Findex.php%2F2020%2F11%2F20%2Fel-mundo-del-spring-boot%2F&psig=AOvVaw3acWOsgBSYYOciyJxscPmI&ust=1710780375799000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCPDK19bf-4QDFQAAAAAdAAAAABAI" class="h-16 w-auto">
+            </div>
+            <h1 class="text-3xl text-center mt-4 mb-8">¡Bienvenido a mi Aplicación Spring Boot!</h1>
+            <div class="flex justify-center">
+                <a href="/tasks" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Ver Tareas
+                </a>
+                <a href="/tasks/new" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-4">
+                    Nueva Tarea
+                </a>
+            </div>
+        </div>
     </div>
-  </div>
-
-  <!-- Bootstrap y jQuery (ambos necesarios para los componentes de JavaScript de Bootstrap) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

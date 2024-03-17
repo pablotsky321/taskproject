@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tasks.taskproject.security.authRe.LoginRequest;
+import com.tasks.taskproject.security.authRe.LoginResponse;
 import com.tasks.taskproject.security.authRe.RegisterResponse;
 import com.tasks.taskproject.security.entities.UserEntity;
 import com.tasks.taskproject.security.services.AuthenticationService;
@@ -25,6 +27,24 @@ public class AuthController {
     public ResponseEntity<?> register(@Valid @RequestBody UserEntity user){
         try {
             return new ResponseEntity<RegisterResponse>(authenticationService.register(user),HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest loginRequest){
+        try {
+            return new ResponseEntity<LoginResponse>(authenticationService.login(loginRequest),HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/register_admin")
+    public ResponseEntity<?> registerAdmin(@Valid @RequestBody UserEntity user){
+        try {
+            return new ResponseEntity<RegisterResponse>(authenticationService.registerAdmin(user),HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
         }
