@@ -12,7 +12,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.tasks.taskproject.security.filter.JwtAuthenticationFilter;
 import com.tasks.taskproject.security.services.UserDetailsServiceImp;
 
 @Configuration
@@ -20,9 +22,11 @@ import com.tasks.taskproject.security.services.UserDetailsServiceImp;
 public class SecurityConfig {
 
     private final UserDetailsServiceImp userDetailsServiceImp;
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
-    public SecurityConfig(UserDetailsServiceImp userDetailsServiceImp){
+    public SecurityConfig(UserDetailsServiceImp userDetailsServiceImp, JwtAuthenticationFilter jwtAuthenticationFilter){
         this.userDetailsServiceImp = userDetailsServiceImp;
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
 
     }
 
@@ -39,10 +43,11 @@ public class SecurityConfig {
                     requests.requestMatchers("/auth/**","/index.html").permitAll();
                     requests.anyRequest().authenticated();
                 })
-                .authenticationProvider(authenticationProvider())
                 .sessionManagement(session->{
                     session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
                 })
+                .authenticationProvider(authenticationProvider())
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 

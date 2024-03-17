@@ -6,6 +6,8 @@ import org.springframework.security.core.GrantedAuthority;
 
 import com.tasks.taskproject.entities.Task;
 
+import jakarta.validation.constraints.NotBlank;
+
 import java.util.List;
 
 @Document(collection = "Users")
@@ -13,10 +15,15 @@ public class UserEntity {
 
     @Id
     private String id;
+    @NotBlank
     private String nombres;
+    @NotBlank
     private String apellidos;
+    @NotBlank
     private String username;
+    @NotBlank
     private String password;
+    
     private Roles role;
     private List<GrantedAuthority> authorities;
     private List<Task> tareas;
