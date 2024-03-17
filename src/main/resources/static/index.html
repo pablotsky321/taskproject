@@ -1,48 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager - Springboot con Tailwind</title>
-    <link href="@tailwindcss/forms@latest/dist/forms.css" rel="stylesheet">
-    <link href="@tailwindcss/typography@latest/dist/typography.css" rel="stylesheet">
-    <link href="@tailwindcss/aspect-ratio@latest/dist/aspect-ratio.css" rel="stylesheet">
-    <link href="@tailwindcss/line-clamp@latest/dist/line-clamp.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenido al Gestor de Tareas</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Estilos personalizados -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 600px;
+    }
+    .jumbotron {
+      background-color: #007bff;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
-    <header class="bg-gray-800 text-white p-4">
-        <h1>Task Manager</h1>
-    </header>
-    <main class="container mx-auto p-4">
-        <section class="mb-4">
-            <h2>Bienvenido a Task Manager</h2>
-            <p>Esta aplicación te permite gestionar tus tareas de forma sencilla y eficiente.</p>
-            <p>Puedes crear tareas, asignarles prioridades, establecer fechas límite y seguir su progreso.</p>
-            <p>Task Manager también te permite colaborar con otros usuarios para completar tareas.</p>
-        </section>
-        <section class="mb-4">
-            <h2>Características principales</h2>
-            <ul class="list-disc">
-                <li>Creación de tareas</li>
-                <li>Asignación de prioridades</li>
-                <li>Establecimiento de fechas límite</li>
-                <li>Seguimiento del progreso</li>
-                <li>Colaboración con otros usuarios</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Comenzar</h2>
-            <p>Para empezar a usar Task Manager, puedes:</p>
-            <ul class="list-disc">
-                <li><a href="https://www.antevenio.com/blog/2018/12/plataformas-para-crear-paginas-de-registro/">Registrarte</a> para obtener una cuenta.</li>
-                <li><a href="https://support.google.com/accounts/answer/7338427?hl=es&co=GENIE.Platform%3DDesktop">Iniciar sesión</a> si ya tienes una cuenta.</li>
-                <li><a href="https://es.wikipedia.org/wiki/Documentaci%C3%B3n">Leer la documentación</a> para obtener más información sobre cómo usar Task Manager.</li>
-            </ul>
-        </section>
-    </main>
-    <footer class="bg-gray-800 text-white p-4">
-        <p>Copyright &copy; 2024</p>
-    </footer>
+
+  <div class="jumbotron text-center">
+    <h1 class="display-4">¡Bienvenido al Gestor de Tareas!</h1>
+    <p class="lead">Organiza tu día de manera eficiente</p>
+    <hr class="my-4">
+    <p>Accede a tus tareas desde cualquier lugar</p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Iniciar sesión</a>
+    <a class="btn btn-success btn-lg" href="#" role="button">Registrarse</a>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Características principales:</h2>
+        <ul>
+          <li>Crear, editar y eliminar tareas fácilmente</li>
+          <li>Establecer fechas de vencimiento y prioridades</li>
+          <li>Organizar tareas por categorías</li>
+          <li>Acceder a tu lista de tareas desde cualquier dispositivo</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <h2>¿Por qué elegirnos?</h2>
+        <p>Nuestro Gestor de Tareas te permite gestionar tus actividades diarias de manera eficiente, aumentando tu productividad y ayudándote a cumplir tus metas.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap y jQuery (ambos necesarios para los componentes de JavaScript de Bootstrap) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
