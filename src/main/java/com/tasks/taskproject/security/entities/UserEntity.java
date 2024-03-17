@@ -1,6 +1,7 @@
 package com.tasks.taskproject.security.entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -19,6 +20,7 @@ public class UserEntity {
     private String nombres;
     @NotBlank
     private String apellidos;
+    @Indexed
     @NotBlank
     private String username;
     @NotBlank
