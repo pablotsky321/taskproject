@@ -3,7 +3,12 @@ package com.tasks.taskproject.entities;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.tasks.taskproject.security.entities.UserEntity;
+
+@Document(collection = "Tasks")
 public class Task {
 
     @Id
@@ -13,13 +18,31 @@ public class Task {
     private Date fecha_creacion;
     private Date fecha_finalizacion;
     private Estado estado;
-    
+
+    @DBRef
+    private UserEntity userEntity;
+
     public Task(String titulo, String descripcion, Date fecha_creacion, Date fecha_finalizacion, Estado estado) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.fecha_creacion = fecha_creacion;
         this.fecha_finalizacion = fecha_finalizacion;
         this.estado = estado;
+    }
+
+    public Task(String id, String titulo, String descripcion, Date fecha_creacion, Date fecha_finalizacion,
+            Estado estado, UserEntity userEntity) {
+        this.id = id;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.fecha_creacion = fecha_creacion;
+        this.fecha_finalizacion = fecha_finalizacion;
+        this.estado = estado;
+        this.userEntity = userEntity;
+    }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
     }
 
     public Task() {
