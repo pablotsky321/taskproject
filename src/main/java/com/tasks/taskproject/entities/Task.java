@@ -22,17 +22,7 @@ public class Task {
     @DBRef
     private UserEntity userEntity;
 
-    public Task(String titulo, String descripcion, Date fecha_creacion, Date fecha_finalizacion, Estado estado) {
-        this.titulo = titulo;
-        this.descripcion = descripcion;
-        this.fecha_creacion = fecha_creacion;
-        this.fecha_finalizacion = fecha_finalizacion;
-        this.estado = estado;
-    }
-
-    public Task(String id, String titulo, String descripcion, Date fecha_creacion, Date fecha_finalizacion,
-            Estado estado, UserEntity userEntity) {
-        this.id = id;
+    public Task(String titulo, String descripcion, Date fecha_creacion, Date fecha_finalizacion, Estado estado,UserEntity userEntity) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.fecha_creacion = fecha_creacion;
@@ -91,6 +81,10 @@ public class Task {
 
     public void setEstado(Estado estado) {
         this.estado = estado;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
     }
 
 }

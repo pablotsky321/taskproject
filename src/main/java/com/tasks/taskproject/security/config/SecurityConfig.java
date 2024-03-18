@@ -44,6 +44,7 @@ public class SecurityConfig {
                     requests.requestMatchers("/auth/**","/index.html").permitAll();
                     requests.requestMatchers("/test/user_page").hasAuthority(Roles.USER.name());
                     requests.requestMatchers("/test/admin_page").hasAuthority(Roles.ADMIN.name());
+                    requests.requestMatchers("/task/**").hasAuthority(Roles.USER.name());
                     requests.anyRequest().authenticated();
                 })
                 .sessionManagement(session->{
