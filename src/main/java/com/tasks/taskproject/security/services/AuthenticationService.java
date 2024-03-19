@@ -69,12 +69,12 @@ public class AuthenticationService {
 
     public LoginResponse login(LoginRequest loginRequest){
         if(!userRepository.findByUsername(loginRequest.getUsername()).isPresent()){
-            return new LoginResponse(null,"username not found");
+            return new LoginResponse(null,null,"username not found");
         }
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
         UserEntity user = userRepository.findByUsername(loginRequest.getUsername()).get();
         String token = jwtService.generateToken(user);
-        return new LoginResponse(token,"Login successful");
+        return new LoginResponse(token, user.getId(),"Login successful");
     }
 
 }

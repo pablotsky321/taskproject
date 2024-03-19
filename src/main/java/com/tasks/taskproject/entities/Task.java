@@ -1,5 +1,6 @@
 package com.tasks.taskproject.entities;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
@@ -15,18 +16,20 @@ public class Task {
     private String id;
     private String titulo;
     private String descripcion;
-    private Date fecha_creacion;
-    private Date fecha_finalizacion;
+    private LocalDateTime fecha_creacion;
+    private LocalDateTime fecha_finalizacion;
+    private boolean finalizada;
     private Estado estado;
 
     @DBRef
     private UserEntity userEntity;
 
-    public Task(String titulo, String descripcion, Date fecha_creacion, Date fecha_finalizacion, Estado estado,UserEntity userEntity) {
+    public Task(String titulo, String descripcion, LocalDateTime fecha_creacion, LocalDateTime fecha_finalizacion, Estado estado,UserEntity userEntity, boolean finalizada) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.fecha_creacion = fecha_creacion;
         this.fecha_finalizacion = fecha_finalizacion;
+        this.finalizada = finalizada;
         this.estado = estado;
         this.userEntity = userEntity;
     }
@@ -59,19 +62,19 @@ public class Task {
         this.descripcion = descripcion;
     }
 
-    public Date getFecha_creacion() {
+    public LocalDateTime getFecha_creacion() {
         return fecha_creacion;
     }
 
-    public void setFecha_creacion(Date fecha_creacion) {
+    public void setFecha_creacion(LocalDateTime fecha_creacion) {
         this.fecha_creacion = fecha_creacion;
     }
 
-    public Date getFecha_finalizacion() {
+    public LocalDateTime getFecha_finalizacion() {
         return fecha_finalizacion;
     }
 
-    public void setFecha_finalizacion(Date fecha_finalizacion) {
+    public void setFecha_finalizacion(LocalDateTime fecha_finalizacion) {
         this.fecha_finalizacion = fecha_finalizacion;
     }
 
@@ -85,6 +88,14 @@ public class Task {
 
     public void setUserEntity(UserEntity userEntity) {
         this.userEntity = userEntity;
+    }
+
+    public boolean isFinalizada() {
+        return finalizada;
+    }
+
+    public void setFinalizada(boolean finalizada) {
+        this.finalizada = finalizada;
     }
 
 }

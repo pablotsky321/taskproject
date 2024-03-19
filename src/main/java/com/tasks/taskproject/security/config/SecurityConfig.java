@@ -50,6 +50,9 @@ public class SecurityConfig {
                 .sessionManagement(session->{
                     session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
                 })
+                .logout(logout->{
+                    logout.logoutUrl("/logout");
+                })
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
