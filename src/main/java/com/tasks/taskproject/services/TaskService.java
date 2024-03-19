@@ -29,6 +29,7 @@ public class TaskService {
         task.setEstado(Estado.ON_TIME);
         task.setUserEntity(userFind);
         task.setFecha_creacion(LocalDateTime.now());
+        task.setFinalizada(false);
         Task taskSave = taskRepository.save(task);
         taskSave.setUserEntity(null);
         userFind.getTareas().add(taskSave);
