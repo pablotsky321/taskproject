@@ -7,6 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.tasks.taskproject.security.entities.UserEntity;
 
 @Document(collection = "Tasks")
@@ -16,7 +17,9 @@ public class Task {
     private String id;
     private String titulo;
     private String descripcion;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime fecha_creacion;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime fecha_finalizacion;
     private boolean finalizada;
     private Estado estado;

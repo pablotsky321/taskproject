@@ -18,7 +18,7 @@ import com.tasks.taskproject.services.TaskService;
 
 @RestController
 @RequestMapping("/task")
-@CrossOrigin("{http://localhost:4200}")
+@CrossOrigin("http://localhost:4200")
 public class TaskController {
 
     @Autowired
