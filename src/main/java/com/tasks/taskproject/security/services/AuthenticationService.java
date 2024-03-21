@@ -11,7 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.tasks.taskproject.entities.Task;
+//import com.tasks.taskproject.entities.Task;
 import com.tasks.taskproject.security.authRe.LoginRequest;
 import com.tasks.taskproject.security.authRe.LoginResponse;
 import com.tasks.taskproject.security.authRe.RegisterResponse;
@@ -39,13 +39,12 @@ public class AuthenticationService {
             return new RegisterResponse(null,"user already exists");
         }
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        List<Task> tareas = new ArrayList<>();
+        //List<Task> tareas = new ArrayList<>();
         user.setRole(Roles.USER);
         authorities.add(new SimpleGrantedAuthority(Roles.USER.name()));
         authorities.add(new SimpleGrantedAuthority(Roles.INVITED.name()));
         user.setAuthorities(authorities);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setTareas(tareas);
         UserEntity userSave = userRepository.save(user);
         return new RegisterResponse(userSave,"user created");
     }
@@ -55,14 +54,13 @@ public class AuthenticationService {
             return new RegisterResponse(null,"user already exists");
         }
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        List<Task> tareas = new ArrayList<>();
+       // List<Task> tareas = new ArrayList<>();
         user.setRole(Roles.ADMIN);
         authorities.add(new SimpleGrantedAuthority(Roles.USER.name()));
         authorities.add(new SimpleGrantedAuthority(Roles.INVITED.name()));
         authorities.add(new SimpleGrantedAuthority(Roles.ADMIN.name()));
         user.setAuthorities(authorities);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setTareas(tareas);
         UserEntity userSave = userRepository.save(user);
         return new RegisterResponse(userSave,"user created");
     }

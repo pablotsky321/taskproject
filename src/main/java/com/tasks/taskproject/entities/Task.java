@@ -1,11 +1,11 @@
 package com.tasks.taskproject.entities;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.tasks.taskproject.security.entities.UserEntity;
@@ -13,7 +13,7 @@ import com.tasks.taskproject.security.entities.UserEntity;
 @Document(collection = "Tasks")
 public class Task {
 
-    @Id
+    @MongoId
     private String id;
     private String titulo;
     private String descripcion;

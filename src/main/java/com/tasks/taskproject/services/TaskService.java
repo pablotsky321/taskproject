@@ -31,15 +31,24 @@ public class TaskService {
         task.setFecha_creacion(LocalDateTime.now());
         task.setFinalizada(false);
         Task taskSave = taskRepository.save(task);
-        taskSave.setUserEntity(null);
-        userFind.getTareas().add(taskSave);
-        userRepository.save(userFind);
         return taskSave;
     }
 
     public List<Task> showTasks(String id_user){
         UserEntity userFind = userRepository.findById(id_user).get();
-        return userFind.getTareas();
+        return taskRepository.findByUserEntity(userFind);
     }
 
+    public String destroyTask(String id_task){
+        taskRepository.deleteById(id_task);
+        return "task: "+id_task+" eliminated";
+    }
+
+    public Task updateTask(String id_task,Task taskInfo){
+     Task updatedTask = taskRepository.findById(id_task).get();
+     updatedTask.setTitulo(taskInfo.getTitulo());
+     updatedTask.setDescripcion(taskInfo.getDescripcion());
+     updatedTask.setFecha_finalizacion(taskInfo.getFecha_finalizacion());
+     return taskRepository.save(updatedTask);
+    }
 }

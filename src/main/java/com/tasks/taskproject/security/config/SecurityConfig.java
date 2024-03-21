@@ -13,7 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
 
 import com.tasks.taskproject.security.entities.Roles;
 import com.tasks.taskproject.security.filter.JwtAuthenticationFilter;
@@ -42,7 +41,7 @@ public class SecurityConfig {
                     cors.disable();
                 })
                 .authorizeHttpRequests(requests->{
-                    requests.requestMatchers("/auth/login","/auth/register","/auth/register_admin","/index.html").permitAll();
+                    requests.requestMatchers("/auth/**","/index.html").permitAll();
                     requests.requestMatchers("/test/user_page").hasAuthority(Roles.USER.name());
                     requests.requestMatchers("/test/admin_page").hasAuthority(Roles.ADMIN.name());
                     requests.requestMatchers("/task/**").hasAuthority(Roles.USER.name());

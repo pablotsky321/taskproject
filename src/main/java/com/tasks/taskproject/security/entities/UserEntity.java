@@ -1,8 +1,8 @@
 package com.tasks.taskproject.security.entities;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 import org.springframework.security.core.GrantedAuthority;
 
 import com.tasks.taskproject.entities.Task;
@@ -14,7 +14,7 @@ import java.util.List;
 @Document(collection = "Users")
 public class UserEntity {
 
-    @Id
+    @MongoId
     private String id;
     @NotBlank
     private String nombres;
@@ -28,7 +28,7 @@ public class UserEntity {
     
     private Roles role;
     private List<GrantedAuthority> authorities;
-    private List<Task> tareas;
+
 
     public UserEntity(String nombres, String apellidos, String username, String password, Roles role,
             List<GrantedAuthority> authorities, List<Task> tareas) {
@@ -38,7 +38,6 @@ public class UserEntity {
         this.password = password;
         this.role = role;
         this.authorities = authorities;
-        this.tareas = tareas;
     }
 
     public UserEntity() {
@@ -91,18 +90,6 @@ public class UserEntity {
 
     public void setAuthorities(List<GrantedAuthority> authorities) {
         this.authorities = authorities;
-    }
-
-    public List<Task> getTareas() {
-        return tareas;
-    }
-
-    public void setTareas(List<Task> tareas) {
-        this.tareas = tareas;
-    }
-
-    public void addTask(Task task){
-        this.tareas.add(task);
     }
 
     public String getId() {
