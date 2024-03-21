@@ -51,4 +51,8 @@ public class TaskService {
      updatedTask.setFecha_finalizacion(taskInfo.getFecha_finalizacion());
      return taskRepository.save(updatedTask);
     }
+
+    public Task seeTask(String id_task){
+        return taskRepository.findById(id_task).get();
+    }
 }

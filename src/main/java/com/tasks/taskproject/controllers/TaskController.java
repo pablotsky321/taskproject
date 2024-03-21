@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tasks.taskproject.entities.Task;
-import com.tasks.taskproject.requests.TaskRe;
 import com.tasks.taskproject.services.TaskService;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @RestController
 @RequestMapping("/task")
@@ -48,6 +49,24 @@ public class TaskController {
     public ResponseEntity<?> findTask(@PathVariable("id_task") String id_task){
         try {
             return new ResponseEntity<String>(taskService.destroyTask(id_task),HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_GATEWAY);
+        }
+    }
+
+    @PutMapping("/update/{id_task}")
+    public ResponseEntity<?> updateTask(@PathVariable("id_task") String id_task,@RequestBody Task taskInfo){
+        try {
+            return new ResponseEntity<Task>(taskService.updateTask(id_task, taskInfo),HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_GATEWAY);
+        }
+    }
+
+    @GetMapping("/details/{id_task}")
+    public ResponseEntity<?> seeTask(@PathVariable("id_task") String id_task){
+        try {
+            return  new ResponseEntity<Task>(taskService.seeTask(id_task),HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_GATEWAY);
         }
