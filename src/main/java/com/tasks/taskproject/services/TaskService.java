@@ -12,6 +12,7 @@ import com.tasks.taskproject.repositories.TaskRepository;
 import com.tasks.taskproject.security.entities.UserEntity;
 import com.tasks.taskproject.security.repositories.UserRepository;
 import com.tasks.taskproject.security.services.JwtService;
+
 @Service
 public class TaskService {
     
