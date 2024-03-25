@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tasks.taskproject.entities.Task;
+import com.tasks.taskproject.reponse.TaskResponse;
+import com.tasks.taskproject.requests.FinishedRe;
 import com.tasks.taskproject.services.TaskService;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -67,6 +69,20 @@ public class TaskController {
     public ResponseEntity<?> seeTask(@PathVariable("id_task") String id_task){
         try {
             return  new ResponseEntity<Task>(taskService.seeTask(id_task),HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_GATEWAY);
+        }
+    }
+
+    @PutMapping("/finished/{id_task}")
+    public ResponseEntity<?> isFinished(@PathVariable("id_task") String id_task,@RequestBody FinishedRe finishedRe){
+        try {
+            boolean finished = taskService.isFinished(id_task, finishedRe.isFinished());
+            if(finished){
+                return new ResponseEntity<TaskResponse>(new TaskResponse("task finished"),HttpStatus.ACCEPTED);
+            }else{
+                return new ResponseEntity<TaskResponse>(new TaskResponse("task not finished"),HttpStatus.ACCEPTED);
+            }
         } catch (Exception e) {
             return new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_GATEWAY);
         }

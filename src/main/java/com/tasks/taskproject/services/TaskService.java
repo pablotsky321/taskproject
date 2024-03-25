@@ -56,4 +56,12 @@ public class TaskService {
     public Task seeTask(String id_task){
         return taskRepository.findById(id_task).get();
     }
+
+    public boolean isFinished(String id_task,boolean isFinished){
+        Task finishTask = taskRepository.findById(id_task).get();
+        finishTask.setFinalizada(isFinished);
+        taskRepository.save(finishTask);
+        return isFinished;
+    }
+
 }
